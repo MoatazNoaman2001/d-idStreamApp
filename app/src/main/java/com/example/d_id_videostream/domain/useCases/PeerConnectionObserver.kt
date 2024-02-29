@@ -14,15 +14,28 @@ class PeerConnectionObserver: PeerConnection.Observer {
     }
 
     override fun onIceConnectionChange(p0: PeerConnection.IceConnectionState?) {
-        Log.d(TAG, "onIceConnectionChange: ${p0?.name}")
+        Log.d(TAG, "onIceConnectionChange: ${p0}")
     }
 
     override fun onIceConnectionReceivingChange(p0: Boolean) {
         Log.d(TAG, "onIceConnectionReceivingChange: ${p0}")
     }
 
-    override fun onIceGatheringChange(p0: PeerConnection.IceGatheringState?) {
-        Log.d(TAG, "onIceGatheringChange: ${p0?.name}")
+    override fun onIceGatheringChange(iceConnectionState: PeerConnection.IceGatheringState?) {
+        Log.d(TAG, "onIceGatheringChange: ${iceConnectionState?.name}")
+        if(iceConnectionState != null){
+            if(iceConnectionState.ordinal == PeerConnection.IceConnectionState.CONNECTED.ordinal){
+                Log.d(TAG, "onIceGatheringChange: connected")
+            }
+            else if(iceConnectionState.ordinal == PeerConnection.IceConnectionState.CLOSED.ordinal){
+                Log.d(TAG, "onIceGatheringChange: closed")
+
+            }
+            else if(iceConnectionState.ordinal == PeerConnection.IceConnectionState.FAILED.ordinal){
+                Log.d(TAG, "onIceGatheringChange: failed")
+
+            }
+        }
     }
 
     override fun onIceCandidate(p0: IceCandidate?) {
@@ -48,5 +61,6 @@ class PeerConnectionObserver: PeerConnection.Observer {
     }
 
     override fun onAddTrack(p0: RtpReceiver?, p1: Array<out MediaStream>?) {
+        Log.d(TAG, "onAddTrack: p0 : ${p0.toString()} , p1: ${p1?.joinToString()}")
     }
 }

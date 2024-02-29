@@ -1,9 +1,11 @@
 package com.example.d_id_videostream.data.repo
 
 import com.example.d_id_videostream.data.remote.RemoteStream
+import com.example.d_id_videostream.domain.model.Answer
 
 interface IdRepo {
     suspend fun createStream() : Resource<RemoteStream>
+    suspend fun startNewStream(answer: Answer, id:String) : Resource<Any>
 }
 
 sealed class Resource<T>(data:T?= null , message:String? = null){
