@@ -5,6 +5,7 @@ import org.webrtc.DataChannel
 import org.webrtc.IceCandidate
 import org.webrtc.MediaStream
 import org.webrtc.PeerConnection
+import org.webrtc.PeerConnection.IceConnectionState
 import org.webrtc.RtpReceiver
 
 private const val TAG = "PeerConnectionObserver"
@@ -40,6 +41,12 @@ class PeerConnectionObserver: PeerConnection.Observer {
 
     override fun onIceCandidate(p0: IceCandidate?) {
         Log.d(TAG, "onIceCandidate: ${p0.toString()}")
+        p0?.let {
+            val candidate = it.sdp
+            val sdpMid = it.sdpMid
+            val sdpMLineIndex = it.sdpMLineIndex
+
+        }
     }
 
     override fun onIceCandidatesRemoved(p0: Array<out IceCandidate>?) {

@@ -4,7 +4,7 @@ import com.example.d_id_videostream.data.remote.RemoteStream
 import com.example.d_id_videostream.domain.model.Answer
 
 interface IdRepo {
-    suspend fun createStream() : Resource<RemoteStream>
+    suspend fun createStream(source_id: String): Resource<RemoteStream>
     suspend fun startNewStream(answer: Answer, id:String) : Resource<Any>
 }
 

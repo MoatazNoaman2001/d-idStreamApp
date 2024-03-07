@@ -52,7 +52,8 @@ dependencies {
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     //webrtc
-    implementation("org.webrtc:google-webrtc:1.0.+")
+    implementation("org.webrtc:google-webrtc:1.0.32006")
+//    implementation("com.mesibo.api:webrtc:1.0.5")
     //hilt
     implementation("com.google.dagger:hilt-android:2.50")
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
